@@ -1,9 +1,7 @@
 ﻿
-Desk d1 = new Desk();
+Desk d1 = new Desk("red", "Nivea");
 
-d1.colour = "green";
-d1.height = 0.5m;
-d1.brand = "Auchan";
+Console.WriteLine(d1.Height);
 
 while(true)
 {
@@ -11,24 +9,37 @@ while(true)
     Thread.Sleep(500);
 }
 
-
-class Desk
+//Constructor primary
+class Desk(string color, string brand)
 {
     public const decimal MAX_HEIGHT = 2.0m;
-    public decimal height;
-    public string colour;
-    public string brand;
+    public decimal Height { get; private set; } = 1.0m;
+    public string Color { get; private set; } = color;
+    public string Brand { get; private set; } = brand;
 
+    //Constructor (style 1)
+
+    //public Desk(int height, string color, string brand)
+    //{
+    //    this.height = height;
+    //    this.color = color;
+    //    this.brand = brand;
+    //}
+    
+    public decimal getHeight()
+    {
+        return Height;
+    }
     public void Lift()
     {
-        if (height < MAX_HEIGHT)
+        if (Height < MAX_HEIGHT)
         {
-            height += 0.1m;
+            Height += 0.1m;
         } else
         {
             Console.WriteLine($"Hey, it's too high. Max {MAX_HEIGHT}");
         }
-        Console.WriteLine($"Desk is on {height} height");
+        Console.WriteLine($"Desk is on {Height} height");
     }
 }
 
